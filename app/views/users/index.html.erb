@@ -1,0 +1,78 @@
+<!-- Including CSS & jQuery Dialog UI Here--><!-- 
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<div class="container">
+	<div class="main">
+		<div id="dialog" title="Thanks A Bunch">
+			<form action="send_mail" method="post">
+				<label>To:</label>
+				<input id="to_addr" name="to_addr" type="text">
+				<label>From:</label>
+				<input id="email" name="email" type="text">
+				<label>Message:</label>
+				<textarea rows="4" cols="25" name="message"  id="message" placeholder="Enter Your Message..."></textarea>
+				<label>Timestamp:</label>
+				<input type="time" name="timestamp" step="1"><br><br>
+				<input id="submit" type="submit" value="Thanks">
+			</form>
+		</div> -->
+	<!-- <label>
+		<input type="radio" value="card1" />Theme1</label><br>
+	<label>
+		<input type="radio" value="card2" />Theme2</label><br>
+	<label> -->
+<!-- 	<input id="button" type="button" value="Open Card">
+	</div>
+</div> -->
+== begin
+<script type="text/javascript">
+$(document).ready(function() {
+	/*Dialog box*/
+	$(function() {
+		$("#dialog").dialog({
+			autoOpen: false
+		});
+		$("#button").on("click", function() {
+			$("#dialog").dialog("open");
+		});
+	});
+	// Validating Form Fields.....
+	$("#submit").click(function(e) {
+		var email = $("#email").val();
+		var to_addr = $("#to_addr").val();
+		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+		if (email === '' || to_addr === '') {
+			alert("Please fill all fields...!!!!!!");
+			e.preventDefault();
+		} else if (!(email).match(emailReg)) {
+			alert("Invalid Email...!!!!!!");
+			e.preventDefault();
+		} else {
+			// alert("Form Submitted Successfully......");
+		}
+	});
+	/*email autocomplete search*/
+	var availableTags=new Array();
+	<%if !@user.nil?%>
+		<% @user.each do |auto_complete|%>
+			availableTags.push('<%=auto_complete.email%>');
+		<%end%>
+	<%end%>
+	$("#to_addr" ).autocomplete({
+		source: availableTags
+	});
+	/*Placeholder focus and blur*/
+	$('input,textarea').focus(function(){
+   		$(this).data('placeholder',$(this).attr('placeholder'))
+   		$(this).attr('placeholder','');
+	});
+	$('input,textarea').blur(function(){
+   		$(this).attr('placeholder',$(this).data('placeholder'));
+	});
+	/*fade out background*/
+	$(".ui-widget-overlay").attr('style','background-color: #000; opacity:1; z-index:1000;');
+});
+</script>
+== end
+

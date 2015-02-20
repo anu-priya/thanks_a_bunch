@@ -1,0 +1,63 @@
+<style>
+.headerSec{
+	padding: 5px 5px;
+	border: 1px solid;
+}
+.search_box{
+	padding: 15px 15px;
+	border: 1px solid;
+	margin-top: 12px;
+	height: 260px;
+}
+.search_name{
+	border: 1px solid grey;
+	width: 220px;
+}
+.user_list{
+	border: 1px solid red;
+	height:	200px;
+	overflow:auto;
+}
+</style>
+<div class="headerSec">
+	Welcome Anupriya
+</div>
+<div class="search_box">
+	<!-- Employee Search <input class="search_name" type="text" name="search">
+	 <br> -->
+	<div class="ui-widget">
+		<%= form_tag fetch_user_detail_dashboards_path, :method => 'get', :multipart => true, :remote =>true do %>
+		  <p>
+		  	<%= label_tag 'Employee Search', nil, class: 'small_label'%>
+	    	<%= text_field_tag :search, nil,class: 'email' %>
+	    	<%= text_field_tag "#{@list_user.emp_id if @list_user && @list_user.emp_id.present? && !@list_user.emp_id.blank?}"%>
+	    	<%#= hidden_field_tag "user_id", "#{@list_user.emp_id if @list_user && @list_user.emp_id.present? && !@list_user.emp_id.blank?}" %>
+	    	<%= submit_tag "Add", :name => nil, id: 'add_user' %>
+	  		</p>
+		<% end %>
+	</div>
+	<div class="user_list">
+
+
+	</div>
+</div>
+<script type="text/javascript">
+	/*email autocomplete search*/
+    $('.email').autocomplete({
+	    autoFocus: true,
+	    source: "/dashboards/get_user_emails",
+	    messages: {
+	        noResults: '',
+	        results: function() {}
+	    },
+	    minLength: 1,
+	    focus: function (event, ui) {
+	        $(event).val(ui.item.label);
+	    },
+	    select: function (event, ui) {
+	        $(event).val(ui.item.label);
+	    }
+	});
+</script>
+
+

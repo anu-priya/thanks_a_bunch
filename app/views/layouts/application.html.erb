@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ThanksABunch</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<style>
+.office-logo{
+	float: right;
+	padding-top: 15px;
+}
+.header-content{
+	background-color: #F4F4F4;
+	 width:100%; height:122px; 
+}
+.image-header{
+	background-color: #FB9C1D;
+}
+.wrapperDiv{
+	padding-top: 5px;
+}
+.logo{
+	padding-top: 20px;
+}
+.clear{    
+clear:both;
+height:0px;
+overflow:hidden;
+}
+</style>
+<body>
+<!-- <div class="data-wrapper">
+	<div class="header-content">
+		<div class="logo">
+			<%#= image_tag("logo.png", alt: "Office Connect")%>
+			<%#= image_tag("calsoft-logo.png", alt: "Alten Calsoft" ,:class => "office-logo")%>
+		</div>
+   </div>
+   <div class="clear"></div>
+   <div class="wrapperDiv">
+		<div class="image-header">
+			<%#= image_tag("img_header.png", alt: "Header")%>
+		</div>
+	</div>
+</div> -->
+	<%= yield %>
+</body>
+</html>

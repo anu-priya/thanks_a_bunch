@@ -1,0 +1,26 @@
+<% if @list_user.present? && !@list_user.blank? %>
+  <h3>Listing Added Users</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @list_user.each do |card| %>
+        <tr>  
+          <td><%= card.fname %></td>
+          <td><%= card.lname %></td>
+          <td><%= card.email %></td>
+          <!-- <td><input type="hidden" value="<%= card.emp_id%>" ></td> -->
+          <td><%#= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
