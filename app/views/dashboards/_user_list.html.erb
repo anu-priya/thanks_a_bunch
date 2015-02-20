@@ -17,8 +17,13 @@
           <td><%= card.fname %></td>
           <td><%= card.lname %></td>
           <td><%= card.email %></td>
-          <!-- <td><input type="hidden" value="<%= card.emp_id%>" ></td> -->
-          <td><%#= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>
+          <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      dashboards_path(card),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+          </td>
         </tr>
       <% end %>
     </tbody>

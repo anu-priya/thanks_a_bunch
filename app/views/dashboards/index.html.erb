@@ -27,7 +27,7 @@
 		<p>
 			<label for="Employee_Search" class="labelName">Employee_Search</label>
 			<input type="text" name="search" id="search_user_email" autocomplete="off" class="email ui-autocomplete-input"><br>
-	        <input type="text" name="user_emails" id="selected_emails" value=''/>
+	        <input type="hidden" name="user_emails" id="selected_emails" value=''/>
     		<input id="add_user" type="submit" value="Add">
  		</p>
 	</div>
@@ -55,28 +55,34 @@
 	});
 	/*Adding muliple values*/
 	$("#add_user").click(function(){
-		 email = $("#search_user_email").val();
-		 selected_users = $("#selected_emails").val();
-		 selected_emails = [];
-		if(selected_users == ""){
-			selected_emails.push(email);
-			$("#selected_emails").val(selected_emails);
-		}else{
-			selected_emails.push(selected_users);
-			selected_emails.push(email);
-			$("#selected_emails").val(selected_emails);
-		}
-		$.ajax(
-		{
-			url : "/dashboards/fetch_user_detail",
-			type: "GET",
-			data : {search: selected_emails} ,
-			dataType: "script",
-			success:function(data)
-			{
+        var email = jQuery("#search_user_email").val();
+        var selected_users = jQuery("#selected_emails").val();
+        var selected_emails = [];
+        if(selected_users == ""){
+            selected_emails.push(email);
+            jQuery("#selected_emails").val(selected_emails);
+        }else{
+            selected_emails.push(selected_users);
+            selected_emails.push(email);
+            jQuery("#selected_emails").val(selected_emails);
+        }
+        var final_users =jQuery("#selected_emails").val();
+        $.ajax(
+            {
+                url : "/dashboards/fetch_user_detail",
+                type: "GET",
+                data : {search: final_users} ,
+                dataType: "script",
+                success:function(data){}
+            });
+		});
+		$.ajax({
+			url: "/destroy",
+			type: 'DELETE',
+			success: function(result) {
+			// Do something with the result
 			}
 		});
-    });
 </script>
 
 
