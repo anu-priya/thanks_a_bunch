@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require jquery-1.10.2
 //= require jquery-ui
 //= require turbolinks

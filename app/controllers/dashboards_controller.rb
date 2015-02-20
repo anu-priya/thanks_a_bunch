@@ -9,6 +9,6 @@ class DashboardsController < ApplicationController
 	end
 
 	def fetch_user_detail
-	  @list_user = User.where("email =?",params[:search])
+	  @list_user = User.where(email: params[:search]).uniq
 	end
 end

@@ -46,3 +46,6 @@ gem 'ckeditor'
 gem "paperclip"
 gem 'mini_magick'
 gem 'rmagick', '2.13.2'
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'

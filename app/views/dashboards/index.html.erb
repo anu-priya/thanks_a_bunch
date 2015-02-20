@@ -7,14 +7,14 @@
 	padding: 15px 15px;
 	border: 1px solid;
 	margin-top: 12px;
-	height: 260px;
+	height: auto;
 }
 .search_name{
 	border: 1px solid grey;
 	width: 220px;
 }
 .user_list{
-	border: 1px solid red;
+	border: 1px solid;
 	height:	200px;
 	overflow:auto;
 }
@@ -23,18 +23,13 @@
 	Welcome Anupriya
 </div>
 <div class="search_box">
-	<!-- Employee Search <input class="search_name" type="text" name="search">
-	 <br> -->
 	<div class="ui-widget">
-		<%= form_tag fetch_user_detail_dashboards_path, :method => 'get', :multipart => true, :remote =>true do %>
-		  <p>
-		  	<%= label_tag 'Employee Search', nil, class: 'small_label'%>
-	    	<%= text_field_tag :search, nil,class: 'email' %>
-	    	<%= text_field_tag "#{@list_user.emp_id if @list_user && @list_user.emp_id.present? && !@list_user.emp_id.blank?}"%>
-	    	<%#= hidden_field_tag "user_id", "#{@list_user.emp_id if @list_user && @list_user.emp_id.present? && !@list_user.emp_id.blank?}" %>
-	    	<%= submit_tag "Add", :name => nil, id: 'add_user' %>
-	  		</p>
-		<% end %>
+		<p>
+			<label for="Employee_Search" class="labelName">Employee_Search</label>
+			<input type="text" name="search" id="search_user_email" autocomplete="off" class="email ui-autocomplete-input"><br>
+	        <input type="text" name="user_emails" id="selected_emails" value=''/>
+    		<input id="add_user" type="submit" value="Add">
+ 		</p>
 	</div>
 	<div class="user_list">
 
@@ -58,6 +53,30 @@
 	        $(event).val(ui.item.label);
 	    }
 	});
+	/*Adding muliple values*/
+	$("#add_user").click(function(){
+		 email = $("#search_user_email").val();
+		 selected_users = $("#selected_emails").val();
+		 selected_emails = [];
+		if(selected_users == ""){
+			selected_emails.push(email);
+			$("#selected_emails").val(selected_emails);
+		}else{
+			selected_emails.push(selected_users);
+			selected_emails.push(email);
+			$("#selected_emails").val(selected_emails);
+		}
+		$.ajax(
+		{
+			url : "/dashboards/fetch_user_detail",
+			type: "GET",
+			data : {search: selected_emails} ,
+			dataType: "script",
+			success:function(data)
+			{
+			}
+		});
+    });
 </script>
 
 
