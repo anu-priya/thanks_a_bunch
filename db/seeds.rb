@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 users = User.create([
-  {:fname => "Anupriya", :lname => "Devaraj", :email =>"anupriya.d@calsoftlabs.com", :emp_id => "3199", :manager_id => 1},
-  {:fname => "Rahila", :lname => "Begam", :email =>"rahila.d@calsoftlabs.com", :emp_id => 3194 , :manager_id => 1},
+  {:fname => "Anupriya", :lname => "Devaraj", :email =>"anupriya.d@calsoftlabs.com", :emp_id => 3199, :manager_id => 1},
+  {:fname => "Rahila", :lname => "Begam", :email =>"rahila.begam@calsoftlabs.com", :emp_id => 3191 , :manager_id => 1},
   {:fname => "Bala", :lname => "D", :email =>"dhandayudhapani.b@calsoftlabs.com", :emp_id => 3192, :manager_id => 1},
   {:fname => "Phanija", :lname => "krishna", :email =>"krishna.phanija@calsoftlabs.com", :emp_id => 3129, :manager_id => 1},
   {:fname => "Malarvannan", :lname => "M", :email =>"malarvannan.m@calsoftlabs.com", :emp_id => 3193, :manager_id => 2},

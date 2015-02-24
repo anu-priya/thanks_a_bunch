@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     resources :dashboards do
       collection do
         get 'get_user_emails'
-        get  'fetch_user_detail'
+        get 'fetch_user_detail'
+        get 'user_detail'
       end
     end
 

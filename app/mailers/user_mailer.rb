@@ -1,9 +1,11 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+	default from: "anupriya.d@calsoftlabs.com"
 
-  def card_template(to_addr,from,message,timestamp)
-  	# mail(to: to_addr, subject: message, cc:"anupriyaraji@gmail.com")
-  	mail(to: to_addr, subject: message)
-  end
+	def thanks_template(user,theme)
+		headers['X-No-Spam'] = 'True'
+		mail :to => user, :subject => "Thanks A Bunch"
+	end
 
 end
+
+

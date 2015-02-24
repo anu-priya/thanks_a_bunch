@@ -42,10 +42,15 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+#Text-Editor
 gem 'ckeditor'
+# Attachment
 gem "paperclip"
 gem 'mini_magick'
 gem 'rmagick', '2.13.2'
+#Bootstrap
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+#Delayed Job
+gem 'delayed_job_active_record' 

@@ -1,6 +1,4 @@
 <% if @list_user.present? && !@list_user.blank? %>
-  <h3>Listing Users</h3>
-
   <table class="table table-striped">
     <thead>
       <tr>
@@ -18,11 +16,7 @@
           <td><%= card.lname %></td>
           <td><%= card.email %></td>
           <td>
-          <%#= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      dashboards_path(card),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+          <img alt="Delete" class="delete_user" id="delete_<%= card.emp_id%>" onclick="remove_user('<%= card.email %>','<%= card.emp_id %>');" src="/assets/close.png">
           </td>
         </tr>
       <% end %>

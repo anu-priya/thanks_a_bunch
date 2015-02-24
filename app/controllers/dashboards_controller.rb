@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
-   before_action :set_user, only: [:destroy]
+
 	def index
 		
 	end
@@ -14,18 +14,12 @@ class DashboardsController < ApplicationController
   		@list_user = User.where(email: search_input)
 	end
 
-	def destroy
-    	@user.destroy
-    	respond_to do |format|
-      		format.html { redirect_to dashboards_url, notice: 'User was successfully destroyed.' }
-      		format.json { head :no_content }
-    	end
-  	end
+	def user_detail
+		@email = params[:email].split(",").uniq
+		@theme = params[:theme]
+		@email.each do |email_addr|
+		 UserMailer.delay.thanks_template(email_addr,@theme)
+		end
+	end
 
-  	private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:search])
-      p @user.inspect
-    end
 end
